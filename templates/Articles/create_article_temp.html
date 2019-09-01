@@ -1,0 +1,10 @@
+{% extends 'Home/base.html' %}
+{% block body_block %}
+  <div class="jumbotron">
+     <form action="{% url 'Art:CreateArticle' %}" method="POST">
+       {% csrf_token %}
+       {{form.as_p}}
+       <input type="submit" name="" class = 'btn btn-primary' value="Submit">
+     </form>
+  </div>
+{% endblock %}

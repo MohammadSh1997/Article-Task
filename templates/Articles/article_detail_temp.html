@@ -1,0 +1,16 @@
+{% extends 'Home/base.html' %}
+{% block body_block %}
+<div class="jumbotron">
+
+  <h2>{{articles_detail.title }}</h2>
+  <h3>{{ articles_detail.article }}</h3>
+  <br><br><br>
+  <h3>Comment:</h3>
+  <ol>
+  {% for c in articles_detail.com.all %}
+    <h2><li>{{ c.comment }}</li></h2>
+  {% endfor %}
+  </ol>
+<a class = 'btn btn-primary' href="{% url 'Art:comment' pk=articles_detail.pk %}">Add comment</a>
+</div>
+{% endblock %}

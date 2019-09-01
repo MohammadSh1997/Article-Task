@@ -1,0 +1,13 @@
+{% extends 'Home/base.html' %}
+{% block body_block %}
+<h1>Articles :</h1>
+ <ul>
+
+  {% for a in articles %}
+  <div class="jumbotron" >
+  <h2><li style = 'display: inline'><a href='{{ a.id }}'>{{ a.title }}</a></li></h2>
+     <h4>BY : {{ a.publisher }}</h4>
+     </div>
+  {% endfor %}
+</ul>
+{% endblock %}
