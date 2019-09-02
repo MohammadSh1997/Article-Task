@@ -21,9 +21,9 @@ class CommentList(ModelSerializer):
     class Meta:
         model = Comment
         fields = [
+        'art',
         'comment',
         ]
-
 
 class CommentDetail(ModelSerializer):
     class Meta:
@@ -32,6 +32,8 @@ class CommentDetail(ModelSerializer):
         'art',
         'comment',
         ]
+        depth=1
+
 
 class ArticleDetailSerializer(ModelSerializer):
     com = CommentList(many=True , read_only=True)

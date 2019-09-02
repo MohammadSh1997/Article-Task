@@ -15,20 +15,24 @@ class ArticleListViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleCreateSerializer
     pagination_class =paginations.ArticlePageNumberPagination
     lookup_field = 'id'
-    # @action(methods=['get'] , detail=True)
-    # def tes(self , request ):
-    #
-    #     return Response("key")
 
+    @action(methods=['get'] , detail=False)
+    def all_info(self, request ,id=None):
+        queryset = Article.objects.all()
+        serializer = ArticleDetailSerializer(queryset , many=True).data
+        return Response(serializer)
 
 
 class CommentListViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
-    serializer_class = CommentDetail
+    serializer_class = CommentList
     pagination_class =paginations.ArticlePageNumberPagination
 
-
-
+    @action(methods=['get'] , detail=False)
+    def all_info(self, request ,id=None):
+         queryset = Comment.objects.all()
+         serializer = CommentDetail(queryset , many=True).data
+         return Response(serializer)
 
 
 
@@ -53,4 +57,4 @@ class CommentListView(ListAPIView):
 
 class CommentCreateAPIView(CreateAPIView):
     queryset = Comment.objects.all()
-    serializer_class = CommentDetail
+    serializer_class = CommentList

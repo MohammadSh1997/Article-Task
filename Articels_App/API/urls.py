@@ -11,8 +11,6 @@ urlpatterns = [
 path('root/' , include(router.urls)),
 
 
-
-
 path('' , views.ArticleListAPIView.as_view() , name='ArticleListApi'),
 path('<int:pk>' , views.ArticleDetailAPIView.as_view() , name='ArticleDetailApi'),
 path('create/' , views.ArticleCreateAPIView.as_view() , name='ArticleCreateApi'),
